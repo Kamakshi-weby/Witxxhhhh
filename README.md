@@ -175,84 +175,8 @@ So if I seem like I’m drifting apart, Know it’s not hate—it’s a heavy he
     <h2>Games 🎮</h2>
     <div class="game-container">
       <div class="game-card">
-        <h3>Tic Tac Toe</h3>
-        <div class="tic-board" id="ticBoard">
-          <div class="tic-cell"></div><div class="tic-cell"></div><div class="tic-cell"></div>
-          <div class="tic-cell"></div><div class="tic-cell"></div><div class="tic-cell"></div>
-          <div class="tic-cell"></div><div class="tic-cell"></div><div class="tic-cell"></div>
-        </div>
-      </div>
-      <div class="game-card">
-        <h3>Memory Match</h3>
-        <div class="memory-board" id="memoryBoard"></div>
-      </div>
-      <div class="game-card">
-        <h3>Simon Says</h3>
-        <div class="simon-board">
-          <div class="simon-btn" style="background:#a855f7">Purple</div>
-          <div class="simon-btn" style="background:#f43f5e">Pink</div>
-          <div class="simon-btn" style="background:#38bdf8">Blue</div>
-          <div class="simon-btn" style="background:#34d399">Green</div>
-        </div>
-      </div>
-      <div class="game-card">
-        <h3>Bollywood Trivia</h3>
-        <div class="trivia-board">
-          <div class="trivia-q">Who played the role of Rancho in 3 Idiots?</div>
-          <div class="trivia-q">Which movie has the iconic song "Tujh Mein Rab Dikhta Hai"?</div>
-          <div class="trivia-q">Who directed "Dilwale Dulhania Le Jayenge"?</div>
-          <div class="trivia-q">Name the movie with the dialogue "Mogambo Khush Hua".</div>
-        </div>
-      </div>
-    </div>
-  </section>  <section id="adios">
-    <h2>Adios</h2>
-    <p>Thanks for floating through my world. Come back soon... or I'll hex you 😈✨</p>
-  </section>  <script>
-    // Tic Tac Toe
-    const cells = document.querySelectorAll('.tic-cell');
-    let currentPlayer = 'X';
-    cells.forEach(cell => {
-      cell.addEventListener('click', () => {
-        if (cell.textContent === '') {
-          cell.textContent = currentPlayer;
-          currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        }
-      });
-    });
-
-    // Memory Match
-    const emojis = ['👻','🕸️','🎃','🧛','🧙‍♀️','👽','👻','🕸️','🎃','🧛','🧙‍♀️','👽'];
-    const shuffle = [...emojis].sort(() => 0.5 - Math.random());
-    const memoryBoard = document.getElementById('memoryBoard');
-    let flipped = [];
-    shuffle.forEach((em, i) => {
-      const card = document.createElement('div');
-      card.className = 'memory-card';
-      card.dataset.index = i;
-      card.innerText = '🃏';
-      card.onclick = () => {
-        if (flipped.length < 2 && !card.classList.contains('matched')) {
-          card.innerText = em;
-          flipped.push({ el: card, val: em });
-          if (flipped.length === 2) {
-            if (flipped[0].val === flipped[1].val) {
-              flipped[0].classList.add('matched');
-              flipped[1].classList.add('matched');
-              flipped = [];
-            } else {
-              setTimeout(() => {
-                flipped[0].innerText = '🃏';
-                flipped[1].innerText = '🃏';
-                flipped = [];
-              }, 800);
-            }
-          }
-        }
-      };
-      memoryBoard.appendChild(card);
-    });
-  </script><script>
+        
+          <script>
 window.onload = function () {
   // ✅ TIC TAC TOE
   const cells = document.querySelectorAll('.tic-cell');
@@ -345,8 +269,39 @@ window.onload = function () {
     { q: 'Who played the role of Rancho in 3 Idiots?', a: 'Aamir Khan' },
     { q: 'Which movie has the iconic song \"Tujh Mein Rab Dikhta Hai\"?', a: 'Rab Ne Bana Di Jodi' },
     { q: 'Who directed \"Dilwale Dulhania Le Jayenge\"?', a: 'Aditya Chopra' },
-    { q: 'Name the movie with the dialogue \"Mogambo Khush Hua\".', a: 'Mr. India' }
-  ];
+    { q: 'Name the movie with the dialogue \"Mogambo Khush Hua\".', a: 'Mr. India' },
+  { q: 'Who is the King of Bollywood?', o: ['Salman', 'SRK', 'Aamir', 'Ranbir'], a: 1 },
+  { q: 'Which movie won Filmfare 2023?', o: ['RRR', 'Pathaan', 'Jawan', 'Gully Boy'], a: 2 },
+  { q: 'Which actress is called "Desi Girl"?', o: ['Katrina', 'Priyanka', 'Alia', 'Deepika'], a: 1 },
+  { q: 'Who played the role of Munna Bhai?', o: ['Aamir Khan', 'Salman Khan', 'Sanjay Dutt', 'Shah Rukh Khan'], a: 2 },
+  { q: 'Which movie has the song "Kal Ho Naa Ho"?', o: ['Veer-Zaara', 'Kal Ho Naa Ho', 'Kabhi Khushi Kabhie Gham', 'Dil Se'], a: 1 },
+  { q: 'Which actor starred in "Dangal"?', o: ['Salman Khan', 'Akshay Kumar', 'Aamir Khan', 'Ajay Devgn'], a: 2 },
+  { q: 'Who directed "Kabir Singh"?', o: ['Sandeep Vanga', 'Karan Johar', 'Rohit Shetty', 'Zoya Akhtar'], a: 0 },
+  { q: 'What is the real name of Govinda?', o: ['Ravi Kapoor', 'Govind Ahuja', 'Sunil Shetty', 'Rakesh Roshan'], a: 1 },
+  { q: 'Which film is based on hockey?', o: ['Chak De India', 'Dangal', 'Lagaan', 'Mary Kom'], a: 0 },
+  { q: 'Who played Bajirao in "Bajirao Mastani"?', o: ['Ranbir Kapoor', 'Hrithik Roshan', 'Ranveer Singh', 'Shahid Kapoor'], a: 2 },
+  { q: 'In which year did "Sholay" release?', o: ['1975', '1980', '1982', '1970'], a: 0 },
+  { q: 'What is Katrina Kaif\'s debut movie?', o: ['Boom', 'Namastey London', 'Maine Pyaar Kyun Kiya', 'Zindagi Na Milegi Dobara'], a: 0 },
+  { q: 'Which movie has the character Geet?', o: ['Barfi!', 'Jab We Met', 'Queen', 'Tamasha'], a: 1 },
+  { q: 'Who composed the music for "Dil Se"?', o: ['Pritam', 'Shankar-Ehsaan-Loy', 'A.R. Rahman', 'Vishal-Shekhar'], a: 2 },
+  { q: 'Who is called Mr. Perfectionist in Bollywood?', o: ['Shah Rukh Khan', 'Hrithik Roshan', 'Aamir Khan', 'Saif Ali Khan'], a: 2 },
+  { q: 'Which movie features the song "Tujh Mein Rab Dikhta Hai"?', o: ['Rab Ne Bana Di Jodi', 'Dilwale', 'Jab Tak Hai Jaan', 'Fan'], a: 0 },
+  { q: 'What is the profession of Shahid in "Kabir Singh"?', o: ['Lawyer', 'Doctor', 'Engineer', 'Singer'], a: 1 },
+  { q: 'Which actor was in "Andaz Apna Apna"?', o: ['Govinda', 'Aamir & Salman', 'Ajay Devgn', 'Saif & SRK'], a: 1 },
+  { q: 'Who played the lead in "Raazi"?', o: ['Deepika', 'Kangana', 'Alia Bhatt', 'Kareena'], a: 2 },
+  { q: 'Which movie is India\'s official entry to Oscars 2022?', o: ['RRR', 'Chhello Show', 'The Kashmir Files', 'Rocketry'], a: 1 },
+  { q: 'What is the highest-grossing Indian film ever?', o: ['PK', 'Dangal', 'Baahubali 2', 'Pathaan'], a: 2 },
+  { q: 'Who played the character of Kabir in "War"?', o: ['Tiger Shroff', 'Hrithik Roshan', 'Ranveer Singh', 'Shahid Kapoor'], a: 1 },
+  { q: 'Which film was based on surgical strikes?', o: ['Uri', 'Shershaah', 'Raazi', 'Attack'], a: 0 },
+  { q: 'Which actor is known for his dance?', o: ['Nawazuddin', 'Hrithik Roshan', 'Aamir Khan', 'Pankaj Tripathi'], a: 1 },
+  { q: 'Which actress debuted in "Student of the Year"?', o: ['Kriti Sanon', 'Kiara Advani', 'Alia Bhatt', 'Sara Ali Khan'], a: 2 },
+  { q: 'What role did Akshay play in "Toilet"?', o: ['Villain', 'Reporter', 'Social Worker', 'Husband'], a: 3 },
+  { q: 'Which movie stars SRK & Kajol in Europe?', o: ['Dilwale', 'DDLJ', 'Kabhi Khushi...', 'My Name is Khan'], a: 1 },
+  { q: 'Who is the director of "RRR"?', o: ['Rajkumar Hirani', 'Rohit Shetty', 'SS Rajamouli', 'Zoya Akhtar'], a: 2 },
+  { q: 'What does "PK" stand for in the movie?', o: ['Pakistani Kid', 'Peekay (Drunk)', 'Pintu Kumar', 'None'], a: 1 },
+  { q: 'Which movie has the line: "How\'s the Josh?"', o: ['Shershaah', 'Bhuj', 'Uri', 'Kesari'], a: 2 }
+];
+  
 
   let triviaIndex = 0;
 
