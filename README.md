@@ -277,7 +277,7 @@ nav a:hover {
   </section>  <section id="about">
     <h2>About Me</h2>
     <img src="IMG-20250625-WA0000.jpg" alt="About Image" class="small-img" />
-    <p>I’m <span class="highlight">Kamakshi</span>, your local gaming witch coder ✨. I build magic through code, poems, and games. This place is all me — haunting, healing, and hella fun.</p>
+    <p>I’m <span class="highlight">Kamakshi</span>, your local gaming witch coder ✨. I build magic through code, poems, and pain. This place is all me — haunting, healing, and hella fun.</p>
   </section>  <section id="witchy">
     <h2>This Witchy</h2>
     <img src="IMG-20250625-WA0001.jpg" alt="Witchy Image" class="small-img" />
@@ -390,7 +390,9 @@ Maybe I deserve it.
 Maybe I was never meant
 to be anything
 but
-Temporary.</p>
+Temporary.
+25/06/2025
+</p>
     </div>
   </section>   
 
