@@ -270,7 +270,6 @@ nav a:hover {
     <a href="#about">About</a>
     <a href="#witchy">This Witchy</a>
     <a href="#blogs">Blogs</a>
-    <a href="#games">Games</a>
     <a href="#adios">Adios</a>
   </nav>  <section id="home">
     <h2>Welcome to the Realm 🌑</h2>
