@@ -307,6 +307,93 @@ I’ve searched within, I’ve tried my best, But some battles don’t end in re
 So if I seem like I’m drifting apart, Know it’s not hate—it’s a heavy heart. I gave my all, yet here I stand, Still wondering if I was ever enough... in anyone’s hands......
 
 24/06/2025</p>
+<p class="highlight">"Temporary Us"
+by Kamakshi
+
+I always knew who I was
+a shadow I never truly liked.
+Maybe God had plans to heal me,
+or maybe… to break me twice.
+
+Then you came—
+like sunlight through a stormed sky,
+told me I was special,
+held me like no one else tried.
+Loved me loud,
+until I believed maybe I was worth it,
+even though deep down,
+I knew… it was temporary.
+
+I’ve always feared the end.
+The leaving.
+The silence after "forever" fades.
+And now I see it
+the slow turning of the tables,
+the way your eyes no longer stay.
+
+It’s not your fault.
+I know.
+But it still hurts to see you
+look at me like the rest do
+like I’m the villain in a story
+I never meant to write.
+
+I want to let you go,
+to watch you fly,
+to see you smile even if
+that smile isn’t mine.
+But the selfish ache in me
+clings to the memory
+of when we were us
+not just me.
+
+We promised, didn’t we?
+To always be.
+But even forever can be
+just a fleeting dream.
+And I thought knowing the end
+would make it easier
+but I was wrong.
+
+Now I can’t eat,
+can’t sleep,
+can’t even swallow
+without pain sinking deep.
+Each time your lips
+speak another girl's name,
+I swear
+it carves me like a flame.
+
+I know I’m not enough.
+Maybe I never was.
+But you…
+you deserved the stars,
+and I was just a moment
+on your map of Mars.
+
+Still, those small, glowing moments—
+even if they were just pixels and light—
+were the best chapters of my life.
+
+I’m sorry
+for the chaos I brought.
+I’m sorry
+for being a storm you never sought.
+But if love counts for anything—
+I swear,
+I loved you with all I had to give.
+
+I just want to rewind
+just once
+to feel whole again.
+But maybe this pain…
+maybe it’s mine to bear.
+Maybe I deserve it.
+
+Maybe I was never meant
+to be anything
+but
+Temporary.</p>
     </div>
   </section>   
 
