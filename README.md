@@ -107,7 +107,7 @@
     <nav style="background: #111; padding: 1rem; display: flex; justify-content: center; gap: 2rem; position: sticky; top: 0; z-index: 1000; font-family: 'Creepster', cursive;">
   <a href="#home" style="color: #fff; text-decoration: none;">Home</a>
   <a href="#about" style="color: #fff; text-decoration: none;">About</a>
-  <a href="#thiswitchy" style="color: #fff; text-decoration: none;">This Witchy</a>
+  <a href="#witchy" style="color: #fff; text-decoration: none;">Witchy</a>
   <a href="#blogs" style="color: #fff; text-decoration: none;">Blogs</a>
   <a href="#Tunes" style="color: #fff; text-decoration:none;">Tunes</a>
   <a href="#adios" style="color: #fff; text-decoration: none;">Adios</a>
@@ -269,7 +269,7 @@ nav a:hover {
   </audio>  <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
-    <a href="#witchy">This Witchy</a>
+    <a href="#witchy">Witchy</a>
     <a href="#blogs">Blogs</a>
     <a href="#Tunes">Tunes</a>
     <a href="#adios">Adios</a>
