@@ -307,8 +307,7 @@ I’ve searched within, I’ve tried my best, But some battles don’t end in re
 So if I seem like I’m drifting apart, Know it’s not hate—it’s a heavy heart. I gave my all, yet here I stand, Still wondering if I was ever enough... in anyone’s hands......
 
 24/06/2025</p>
-<p class="highlight">Blog 3:"Temporary Us"
-by Kamakshi
+<p class="highlight">Blog 3:"Temporary"
 
 I always knew who I was
 a shadow I never truly liked.
