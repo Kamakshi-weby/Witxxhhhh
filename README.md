@@ -109,7 +109,7 @@
   <a href="#about" style="color: #fff; text-decoration: none;">About</a>
   <a href="#thiswitchy" style="color: #fff; text-decoration: none;">This Witchy</a>
   <a href="#blogs" style="color: #fff; text-decoration: none;">Blogs</a>
-  <a href="#Witching Hour Whispers" style="color: #fff; text-decoration:none;">Witching Hour Whispers </a>
+  <a href="#Tunes" style="color: #fff; text-decoration:none;">Tunes</a>
   <a href="#adios" style="color: #fff; text-decoration: none;">Adios</a>
 </nav>
     section {
@@ -271,7 +271,7 @@ nav a:hover {
     <a href="#about">About</a>
     <a href="#witchy">This Witchy</a>
     <a href="#blogs">Blogs</a>
-    <a href="#Witching Hour Whispers">Witching Hour Whispers </a>
+    <a href="#Tunes">Tunes</a>
     <a href="#adios">Adios</a>
   </nav>  <section id="home">
     <h2>Welcome to the Realm 🌑</h2>
