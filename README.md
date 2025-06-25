@@ -4,6 +4,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>THE LOST WEB</title>
   <style>
+    /* General Game Section Style */
+#games {
+  background-color: #000;
+  color: #fff;
+  padding: 2rem;
+  font-family: 'Creepster', cursive;
+}
+
+/* Memory Game */
+#memory-board {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  gap: 10px;
+  justify-content: center;
+}
+.memory-card {
+  width: 80px;
+  height: 80px;
+  background-color: #444;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  transition: transform 0.3s;
+}
+.memory-card.flip {
+  background-color: #fff;
+  transform: rotateY(180deg);
+}
+
+/* Tic Tac Toe */
+#tic-tac-toe {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 5px;
+  justify-content: center;
+}
+.cell {
+  width: 80px;
+  height: 80px;
+  background-color: #111;
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 80px;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+/* Simon Says */
+.simon-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  opacity: 0.7;
+  box-shadow: 0 0 10px #fff;
+  cursor: pointer;
+}
+.simon-btn.active {
+  opacity: 1;
+}
+
+/* Quiz */
+#quiz-container {
+  margin-top: 1rem;
+}
+#quiz-options button {
+  display: block;
+  margin: 0.5rem auto;
+  padding: 0.5rem 1rem;
+}
     body {
       margin: 0;
       font-family: 'Courier New', monospace;
@@ -188,7 +261,20 @@
   background: #4ade80;
   color: #111;
   cursor: default;
-} </style>
+} nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+</style>
 </head>
 <body> <audio autoplay loop>
   <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Myuu/The_Dark_Piano/Myuu_-_Ghost_Story.mp3" type="audio/mpeg">
@@ -240,47 +326,162 @@ So if I seem like I’m drifting apart, Know it’s not hate—it’s a heavy he
     </div>
   </section>   
 </section>
-<section id="games" style="background-color:#000; color:#fff; padding: 2rem; font-family: 'Creepster', cursive;">
-  <h2 style="text-align:center; font-size: 3rem; text-decoration: underline; color: #ffd700;">Creepy Cool Games</h2>
+<script>
+// ==== Memory Game ====
+const emojis = ['👻','🕸️','🧙‍♀️','👻','🕸️','🧙‍♀️','🧛','🧛'];
+let memoryFlipped = [];
+let memoryMatched = [];
+const memoryBoard = document.getElementById('memory-board');
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+function createMemoryBoard() {
+  memoryBoard.innerHTML = '';
+  shuffle(emojis).forEach((emoji, i) => {
+    const card = document.createElement('div');
+    card.classList.add('memory-card');
+    card.dataset.index = i;
+    card.dataset.emoji = emoji;
+    card.addEventListener('click', flipMemoryCard);
+    memoryBoard.appendChild(card);
+  });
+}
+function flipMemoryCard() {
+  if (this.classList.contains('flip') || memoryFlipped.length >= 2) return;
+  this.classList.add('flip');
+  this.innerText = this.dataset.emoji;
+  memoryFlipped.push(this);
+  if (memoryFlipped.length === 2) {
+    const [first, second] = memoryFlipped;
+    if (first.dataset.emoji === second.dataset.emoji) {
+      memoryMatched.push(first, second);
+      memoryFlipped = [];
+    } else {
+      setTimeout(() => {
+        first.classList.remove('flip');
+        second.classList.remove('flip');
+        first.innerText = '';
+        second.innerText = '';
+        memoryFlipped = [];
+      }, 1000);
+    }
+  }
+}
+createMemoryBoard();
 
-  <!-- Memory Match -->
-  <h3 style="text-align:center; color: #fff5f5;">Memory Match 🧠</h3>
-  <div id="memory-board" style="display:grid; grid-template-columns:repeat(4, 80px); gap: 10px; justify-content:center;"></div>
+// ==== Tic Tac Toe ====
+const cells = document.querySelectorAll('.cell');
+let currentPlayer = 'X';
+document.getElementById('ttt-status').innerText = `Turn: ${currentPlayer}`;
+cells.forEach(cell => {
+  cell.addEventListener('click', () => {
+    if (cell.innerText === '') {
+      cell.innerText = currentPlayer;
+      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      document.getElementById('ttt-status').innerText = `Turn: ${currentPlayer}`;
+    }
+  });
+});
 
-  <div style="margin: 2rem 0;"></div>
+// ==== Simon Says ====
+let simonPattern = [];
+let simonUser = [];
+let simonColors = ['red', 'green', 'blue', 'yellow'];
+function flashSimon(color) {
+  const btn = document.getElementById(color);
+  btn.classList.add('active');
+  setTimeout(() => btn.classList.remove('active'), 400);
+}
+function playSimonPattern() {
+  let i = 0;
+  const interval = setInterval(() => {
+    flashSimon(simonPattern[i]);
+    i++;
+    if (i >= simonPattern.length) clearInterval(interval);
+  }, 600);
+}
+function startSimon() {
+  simonPattern = [];
+  simonUser = [];
+  nextSimonColor();
+}
+function nextSimonColor() {
+  const color = simonColors[Math.floor(Math.random() * 4)];
+  simonPattern.push(color);
+  playSimonPattern();
+}
+simonColors.forEach(color => {
+  document.getElementById(color).addEventListener('click', () => {
+    simonUser.push(color);
+    flashSimon(color);
+    const current = simonUser.length - 1;
+    if (simonUser[current] !== simonPattern[current]) {
+      alert('Wrong pattern! Try again.');
+      simonUser = [];
+      return;
+    }
+    if (simonUser.length === simonPattern.length) {
+      simonUser = [];
+      nextSimonColor();
+    }
+  });
+});
 
-  <!-- Tic Tac Toe -->
-  <h3 style="text-align:center; color: #ff9999;">Tic Tac Toe ❌⭕</h3>
-  <div id="tic-tac-toe" style="display: grid; grid-template-columns: repeat(3, 80px); gap: 5px; justify-content: center;">
-    <div class="cell"></div><div class="cell"></div><div class="cell"></div>
-    <div class="cell"></div><div class="cell"></div><div class="cell"></div>
-    <div class="cell"></div><div class="cell"></div><div class="cell"></div>
-  </div>
-  <p id="ttt-status" style="text-align:center; margin-top:1rem;">Turn: X</p>
-
-  <div style="margin: 2rem 0;"></div>
-
-  <!-- Simon Says -->
-  <h3 style="text-align:center; color: #b3f0ff;">Simon Says 🧿</h3>
-  <div style="display: flex; justify-content:center; gap:10px; margin-top:1rem;">
-    <div class="simon-btn" id="red" style="background:red;"></div>
-    <div class="simon-btn" id="green" style="background:green;"></div>
-    <div class="simon-btn" id="blue" style="background:blue;"></div>
-    <div class="simon-btn" id="yellow" style="background:yellow;"></div>
-  </div>
-  <div style="text-align:center; margin-top:1rem;">
-    <button onclick="startSimon()" style="padding: 0.5rem 1rem;">Start Game</button>
-  </div>
-
-  <div style="margin: 2rem 0;"></div>
-
-  <!-- Bollywood Trivia -->
-  <h3 style="text-align:center; color: #f7cfff;">Bollywood Trivia 🎥</h3>
-  <div id="quiz-container" style="text-align:center;">
-    <p id="quiz-question"></p>
-    <div id="quiz-options"></div>
-    <p id="quiz-feedback"></p>
-    <button onclick="nextQuestion()">Next Question</button>
-  </div>
-</section>
-</body>
+// ==== Bollywood Trivia ====
+const questions = [
+  {
+    question: "Who played the role of 'Rancho' in 3 Idiots?",
+    options: ["Aamir Khan", "Ranbir Kapoor", "Salman Khan", "Shah Rukh Khan"],
+    answer: "Aamir Khan"
+  },
+  {
+    question: "Which movie featured the song 'Chaiyya Chaiyya'?",
+    options: ["Dil Se", "Raees", "Don", "Kal Ho Na Ho"],
+    answer: "Dil Se"
+  },
+  {
+    question: "Which actress starred in 'Queen'?",
+    options: ["Kangana Ranaut", "Deepika Padukone", "Alia Bhatt", "Kareena Kapoor"],
+    answer: "Kangana Ranaut"
+  },
+  {
+    question: "In which movie did Shah Rukh Khan play a hockey coach?",
+    options: ["Chak De! India", "Darr", "Fan", "Main Hoon Na"],
+    answer: "Chak De! India"
+  }
+];
+let quizIndex = 0;
+function showQuestion() {
+  const q = questions[quizIndex];
+  document.getElementById('quiz-question').innerText = q.question;
+  const optionsDiv = document.getElementById('quiz-options');
+  optionsDiv.innerHTML = '';
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.innerText = opt;
+    btn.onclick = () => checkAnswer(opt);
+    optionsDiv.appendChild(btn);
+  });
+}
+function checkAnswer(selected) {
+  const correct = questions[quizIndex].answer;
+  const feedback = selected === correct ? "✅ Correct!" : `❌ Wrong. It was ${correct}`;
+  document.getElementById('quiz-feedback').innerText = feedback;
+}
+function nextQuestion() {
+  quizIndex = (quizIndex + 1) % questions.length;
+  document.getElementById('quiz-feedback').innerText = '';
+  showQuestion();
+}
+showQuestion();
+</script>
+<section id="adios" style="background-color: #0a0a0a; color: #fff; padding: 4rem; font-family: 'Creepster', cursive;">
+  <h2 style="text-align: center; text-decoration: underline; font-size: 2.5rem;">🌙 Adios</h2>
+  <p style="text-align: center; max-width: 600px; margin: auto; font-size: 1.3rem;">
+    Thank you for exploring my little spooky world! 
+    This was just a witchy beginning—more chaos, more spells, and more stories will brew soon. 
+    Stay weird, stay magical. ✨🧙‍♀️💀<br><br>
+    Adios, fellow night crawler!
+  </p>
+    </section>
+    </body>
