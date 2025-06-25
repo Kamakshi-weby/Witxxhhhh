@@ -3,6 +3,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>THE LOST WEB</title>
   <style>
+    section {
+  scroll-margin-top: 100px;
+}
     /* General Game Section Style */
 #games {
   background-color: #000;
