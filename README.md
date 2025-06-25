@@ -110,7 +110,6 @@
   <a href="#about" style="color: #fff; text-decoration: none;">About</a>
   <a href="#thiswitchy" style="color: #fff; text-decoration: none;">This Witchy</a>
   <a href="#blogs" style="color: #fff; text-decoration: none;">Blogs</a>
-  <a href="#games" style="color: #fff; text-decoration: none;">Game</a>
   <a href="#adios" style="color: #fff; text-decoration: none;">Adios</a>
 </nav>
     section {
@@ -155,22 +154,7 @@
     #adios {
       background: linear-gradient(135deg, #111111, #4b006e);
     }
-    .game-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2em;
-      margin-top: 2em;
-    }
-    .game-card {
-      background: #222;
-      border-radius: 12px;
-      padding: 1em;
-      text-align: center;
-      box-shadow: 0 0 10px #6b21a8;
-    }
-    .game-card h3 {
-      margin-bottom: 1em;
-      color: #facc15;
+    
     }
     .tic-board {
       display: grid;
