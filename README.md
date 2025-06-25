@@ -109,6 +109,7 @@
   <a href="#about" style="color: #fff; text-decoration: none;">About</a>
   <a href="#thiswitchy" style="color: #fff; text-decoration: none;">This Witchy</a>
   <a href="#blogs" style="color: #fff; text-decoration: none;">Blogs</a>
+  <a href="#Witching Hour Whispers" style="color: #fff; text-decoration:none;">Witching Hour Whispers </a>
   <a href="#adios" style="color: #fff; text-decoration: none;">Adios</a>
 </nav>
     section {
@@ -270,6 +271,7 @@ nav a:hover {
     <a href="#about">About</a>
     <a href="#witchy">This Witchy</a>
     <a href="#blogs">Blogs</a>
+    <a href="#Witching Hour Whispers">Witching Hour Whispers </a>
     <a href="#adios">Adios</a>
   </nav>  <section id="home">
     <h2>Welcome to the Realm 🌑</h2>
@@ -545,6 +547,26 @@ function nextQuestion() {
 }
 showQuestion();
 </script>
+<!-- 🎵 SOME CREEPY PLAYLIST SECTION -->
+<section id="some-creepy" style="background-color: #0a0a0a; color: #fff; padding: 4rem; font-family: 'Creepster', cursive;">
+  <h2 style="text-align: center; font-size: 2.5rem; text-decoration: underline; color: #f5f5f5;">
+    🔮 Some Creepy Vibes
+  </h2>
+  <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">
+    Music for lurking in shadows, coding in candlelight, or just being a baddie in black 🖤<br>
+    Hit play... if you're brave enough.
+  </p>
+
+  <div style="display: flex; justify-content: center;">
+    <iframe style="border-radius:12px" 
+      src="https://open.spotify.com/embed/playlist/1Pg4aIDGiFGKhgAfwDa3b3?utm_source=generator" 
+      width="80%" height="380" frameBorder="0" 
+      allowfullscreen="" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
 <section id="adios" style="background-color: #0a0a0a; color: #fff; padding: 4rem; font-family: 'Creepster', cursive;">
   <h2 style="text-align: center; text-decoration: underline; font-size: 2.5rem;">🌙 Adios</h2>
   <p style="text-align: center; max-width: 600px; margin: auto; font-size: 1.3rem;">
