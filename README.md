@@ -309,7 +309,7 @@ So if I seem like I’m drifting apart, Know it’s not hate—it’s a heavy he
 24/06/2025</p>
     </div>
   </section>   
-</section>
+
 <script>
 // ==== Memory Game ====
 const emojis = ['👻','🕸️','🧙‍♀️','👻','🕸️','🧙‍♀️','🧛','🧛'];
