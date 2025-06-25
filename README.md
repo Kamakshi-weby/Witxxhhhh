@@ -239,156 +239,48 @@ So if I seem like I’m drifting apart, Know it’s not hate—it’s a heavy he
 24/06/2025</p>
     </div>
   </section>   
-  <!-- 🎮 GAMES SECTION: Fully Functional Creepy Vibe Games --><section id="games" style="background: linear-gradient(135deg, #0a0a0a, #1f1f1f); color: #fff; padding: 3rem; font-family: 'Creepster', cursive;">
-  <h2 style="text-align:center; font-size: 2.5rem; text-decoration: underline;">Creepy Cool Games</h2>  <!-- 🧠 MEMORY MATCH -->  <div id="memory-game" style="margin-top: 3rem;">
-    <h3 style="text-align:center;">Memory Match 🃏</h3>
-    <div id="memory-board" style="display: grid; grid-template-columns: repeat(4, 100px); gap: 10px; justify-content: center;"></div>
-  </div>  <!-- ❌ TIC TAC TOE -->  <div id="tic-tac-toe" style="margin-top: 3rem;">
-    <h3 style="text-align:center;">Tic Tac Toe ❌⭕</h3>
-    <div style="display: grid; grid-template-columns: repeat(3, 100px); gap: 5px; justify-content: center;">
-      <div class="cell"></div><div class="cell"></div><div class="cell"></div>
-      <div class="cell"></div><div class="cell"></div><div class="cell"></div>
-      <div class="cell"></div><div class="cell"></div><div class="cell"></div>
-    </div>
-    <p id="ttt-status" style="text-align:center; margin-top: 1rem;"></p>
-  </div>  <!-- 🔊 SIMON SAYS -->  <div id="simon" style="margin-top: 3rem;">
-    <h3 style="text-align:center;">Simon Says 🔮</h3>
-    <div id="simon-board" style="display: flex; justify-content: center; gap: 1rem;">
-      <button class="simon-btn" style="width: 100px; height: 100px; background: red;"></button>
-      <button class="simon-btn" style="width: 100px; height: 100px; background: green;"></button>
-      <button class="simon-btn" style="width: 100px; height: 100px; background: blue;"></button>
-      <button class="simon-btn" style="width: 100px; height: 100px; background: yellow;"></button>
-    </div>
-    <button id="start-simon" style="margin: 1rem auto; display: block;">Start Game</button>
-  </div>  <!-- 🎬 BOLLYWOOD TRIVIA -->  <div id="trivia" style="margin-top: 3rem;">
-    <h3 style="text-align:center;">Bollywood Trivia 🎥</h3>
-    <div id="trivia-question" style="text-align:center; margin-bottom: 1rem;"></div>
-    <div id="trivia-options" style="text-align:center;"></div>
-    <div id="trivia-result" style="text-align:center; margin-top: 1rem;"></div>
+</section>
+<section id="games" style="background-color:#000; color:#fff; padding: 2rem; font-family: 'Creepster', cursive;">
+  <h2 style="text-align:center; font-size: 3rem; text-decoration: underline; color: #ffd700;">Creepy Cool Games</h2>
+
+  <!-- Memory Match -->
+  <h3 style="text-align:center; color: #fff5f5;">Memory Match 🧠</h3>
+  <div id="memory-board" style="display:grid; grid-template-columns:repeat(4, 80px); gap: 10px; justify-content:center;"></div>
+
+  <div style="margin: 2rem 0;"></div>
+
+  <!-- Tic Tac Toe -->
+  <h3 style="text-align:center; color: #ff9999;">Tic Tac Toe ❌⭕</h3>
+  <div id="tic-tac-toe" style="display: grid; grid-template-columns: repeat(3, 80px); gap: 5px; justify-content: center;">
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+    <div class="cell"></div><div class="cell"></div><div class="cell"></div>
   </div>
-</section><script>
-// 🎮 Memory Match Game
-const cards = ["👻", "🧛", "🕷️", "🧙", "🎃", "🧟", "🕸️", "🩸"];
-let memoryDeck = [...cards, ...cards];
-let flipped = [], lock = false;
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-function renderMemoryGame() {
-  const board = document.getElementById("memory-board");
-  board.innerHTML = "";
-  shuffle(memoryDeck).forEach((icon, idx) => {
-    const card = document.createElement("div");
-    card.classList.add("memory-card");
-    card.dataset.icon = icon;
-    card.style.cssText = "background:#333; color:#333; width:100px; height:100px; display:flex; align-items:center; justify-content:center; font-size:2rem; cursor:pointer; border:1px solid #888; border-radius:10px; transition:all .3s";
-    card.onclick = () => flipCard(card);
-    board.appendChild(card);
-  });
-}
-function flipCard(card) {
-  if (lock || flipped.includes(card)) return;
-  card.innerText = card.dataset.icon;
-  card.style.color = "#fff";
-  flipped.push(card);
-  if (flipped.length === 2) {
-    lock = true;
-    setTimeout(() => {
-      const [c1, c2] = flipped;
-      if (c1.dataset.icon !== c2.dataset.icon) {
-        c1.innerText = c2.innerText = "";
-        c1.style.color = c2.style.color = "#333";
-      }
-      flipped = [];
-      lock = false;
-    }, 1000);
-  }
-}
+  <p id="ttt-status" style="text-align:center; margin-top:1rem;">Turn: X</p>
 
-// ❌ Tic Tac Toe
-const cells = document.querySelectorAll(".cell");
-let currentPlayer = "X";
-let board = Array(9).fill("");
-cells.forEach((cell, i) => {
-  cell.style.cssText = "background:#222; color:#fff; font-size:2rem; display:flex; align-items:center; justify-content:center; height:100px; border:1px solid #444;";
-  cell.addEventListener("click", () => {
-    if (!board[i]) {
-      board[i] = currentPlayer;
-      cell.innerText = currentPlayer;
-      currentPlayer = currentPlayer === "X" ? "O" : "X";
-      document.getElementById("ttt-status").innerText = `Turn: ${currentPlayer}`;
-    }
-  });
-});
+  <div style="margin: 2rem 0;"></div>
 
-// 🔮 Simon Says
-let simonSequence = [], userSequence = [];
-const simonBtns = document.querySelectorAll(".simon-btn");
-document.getElementById("start-simon").onclick = () => {
-  simonSequence = [];
-  nextSimonColor();
-};
-function nextSimonColor() {
-  const idx = Math.floor(Math.random() * simonBtns.length);
-  simonSequence.push(idx);
-  animateSimon();
-  userSequence = [];
-}
-function animateSimon() {
-  simonSequence.forEach((idx, i) => {
-    setTimeout(() => {
-      simonBtns[idx].style.opacity = 0.5;
-      setTimeout(() => simonBtns[idx].style.opacity = 1, 300);
-    }, i * 600);
-  });
-}
-simonBtns.forEach((btn, idx) => {
-  btn.onclick = () => {
-    userSequence.push(idx);
-    if (userSequence[userSequence.length - 1] !== simonSequence[userSequence.length - 1]) {
-      alert("Wrong pattern! Try again.");
-    } else if (userSequence.length === simonSequence.length) {
-      setTimeout(nextSimonColor, 1000);
-    }
-  };
-});
+  <!-- Simon Says -->
+  <h3 style="text-align:center; color: #b3f0ff;">Simon Says 🧿</h3>
+  <div style="display: flex; justify-content:center; gap:10px; margin-top:1rem;">
+    <div class="simon-btn" id="red" style="background:red;"></div>
+    <div class="simon-btn" id="green" style="background:green;"></div>
+    <div class="simon-btn" id="blue" style="background:blue;"></div>
+    <div class="simon-btn" id="yellow" style="background:yellow;"></div>
+  </div>
+  <div style="text-align:center; margin-top:1rem;">
+    <button onclick="startSimon()" style="padding: 0.5rem 1rem;">Start Game</button>
+  </div>
 
-// 🎬 Bollywood Trivia
-const triviaData = [
-  { q: "Who played Munna Bhai in 'Munna Bhai M.B.B.S.'?", o: ["Salman Khan", "Aamir Khan", "Sanjay Dutt", "Shah Rukh Khan"], a: 2 },
-  { q: "Which movie features the song 'Kal Ho Naa Ho'?", o: ["Kuch Kuch Hota Hai", "Kal Ho Naa Ho", "Kabhi Khushi Kabhie Gham", "Veer-Zaara"], a: 1 },
-  { q: "'3 Idiots' was directed by?", o: ["Rajkumar Hirani", "Farhan Akhtar", "Karan Johar", "Anurag Kashyap"], a: 0 },
-  { q: "Which movie had the character 'Geet' played by Kareena Kapoor?", o: ["Jab We Met", "Kabir Singh", "Chameli", "Bodyguard"], a: 0 },
-  { q: "Who played the role of 'Rancho'?", o: ["Salman Khan", "Sharman Joshi", "R. Madhavan", "Aamir Khan"], a: 3 },
-  { q: "Which is India's first Oscar-winning film?", o: ["Mother India", "Gandhi", "Lagaan", "Slumdog Millionaire"], a: 3 },
-  { q: "Film with 'All is Well' song?", o: ["Student of the Year", "3 Idiots", "PK", "Dil Chahta Hai"], a: 1 },
-  { q: "Which actress starred in 'Queen'?", o: ["Kangana Ranaut", "Alia Bhatt", "Deepika Padukone", "Anushka Sharma"], a: 0 },
-  { q: "Movie with the line 'Don ko pakadna mushkil hi nahi...'?", o: ["Don", "Raees", "Sholay", "Dhoom"], a: 0 },
-  { q: "Which movie features 'Chaiyya Chaiyya'?", o: ["Dil Se", "Swades", "Kabhi Alvida Naa Kehna", "Tanu Weds Manu"], a: 0 }
-];
-let triviaIndex = 0;
-function showTrivia() {
-  const q = triviaData[triviaIndex];
-  document.getElementById("trivia-question").innerText = q.q;
-  const opts = q.o.map((opt, i) => `<button onclick="checkTrivia(${i})">${opt}</button>`).join("<br>");
-  document.getElementById("trivia-options").innerHTML = opts;
-}
-function checkTrivia(selected) {
-  const correct = triviaData[triviaIndex].a;
-  document.getElementById("trivia-result").innerText = selected === correct ? "Correct!" : "Oops, wrong answer.";
-  triviaIndex = (triviaIndex + 1) % triviaData.length;
-  setTimeout(() => {
-    document.getElementById("trivia-result").innerText = "";
-    showTrivia();
-  }, 1500);
-}
+  <div style="margin: 2rem 0;"></div>
 
-window.onload = () => {
-  renderMemoryGame();
-  showTrivia();
-};</section>
-</script></body>
+  <!-- Bollywood Trivia -->
+  <h3 style="text-align:center; color: #f7cfff;">Bollywood Trivia 🎥</h3>
+  <div id="quiz-container" style="text-align:center;">
+    <p id="quiz-question"></p>
+    <div id="quiz-options"></div>
+    <p id="quiz-feedback"></p>
+    <button onclick="nextQuestion()">Next Question</button>
+  </div>
+</section>
+</body>
