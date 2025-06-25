@@ -135,9 +135,56 @@
   justify-content: center;
   cursor: pointer;
 }
-  </style>
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+.simon-btn {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.3s;
+}
+
+.simon-btn:active {
+  transform: scale(0.95);
+}
+
+.simon-btn.glow {
+  box-shadow: 0 0 25px white;
+} .memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  max-width: 400px;
+  margin: 2rem auto;
+  gap: 10px;
+  justify-items: center;
+}
+
+.memory-card {
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #222;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+  transition: all 0.2s ease;
+}
+
+.memory-card.matched {
+  background: #4ade80;
+  color: #111;
+  cursor: default;
+} </style>
 </head>
-<body>
+<body> <audio autoplay loop>
+  <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Myuu/The_Dark_Piano/Myuu_-_Ghost_Story.mp3" type="audio/mpeg">
+</audio>
   <audio autoplay loop>
     <source src="creepy-music.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
@@ -201,10 +248,11 @@ So if I seem like I’m drifting apart, Know it’s not hate—it’s a heavy he
     <div class="tic-cell"></div>
     <div class="tic-cell"></div>
   </div>
-
-  <!-- 🧠 MEMORY MATCH -->
-  <h3 style="margin-top: 2rem;">Memory Match</h3>
-  <div id="memoryBoard"> style="display: grid; grid-template-columns: repeat(6, 60px); gap: 10px;"></div>
+<!-- 🎴 MEMORY MATCH GAME -->
+<section style="background:#1a1a1a; padding: 2rem; color: white;">
+  <h2 style="text-align:center; text-decoration: underline; font-family: 'Creepster', cursive;">Memory Match 👁️</h2>
+  <div id="memoryBoard" class="memory-grid"></div>
+</section>
 
   <!-- 🧠 SIMON SAYS -->
   <h3 style="margin-top: 2rem;">Simon Says</h3>
@@ -214,7 +262,18 @@ So if I seem like I’m drifting apart, Know it’s not hate—it’s a heavy he
     <div class="simon-btn" style="background: #38bdf8; width: 70px; height: 70px;"></div>
     <div class="simon-btn" style="background: #34d399; width: 70px; height: 70px;"></div>
   </div>
-
+<!-- 🧠 UPGRADED SIMON SAYS -->
+<section style="background:#111; padding: 2rem; color: #fff;">
+  <h2 style="text-align:center; text-decoration: underline; font-family: 'Creepster', cursive;">Simon Says 👻</h2>
+  <p id="score" style="text-align:center; font-size: 1.2rem;">Score: 0</p>
+  <div id="simon-game" style="display: grid; grid-template-columns: repeat(2, 100px); gap: 1rem; justify-content: center; margin-top: 2rem;">
+    <div class="simon-btn" id="green" style="background: #34d399;"></div>
+    <div class="simon-btn" id="red" style="background: #f43f5e;"></div>
+    <div class="simon-btn" id="yellow" style="background: #facc15;"></div>
+    <div class="simon-btn" id="blue" style="background: #3b82f6;"></div>
+  </div>
+  <audio id="simon-sound" src="https://www.soundjay.com/button/sounds/beep-07.mp3" preload="auto"></audio>
+</section>
   <!-- 🎥 BOLLYWOOD TRIVIA -->
   <h3 style="margin-top: 2rem;">Bollywood Trivia</h3>
   <div class="trivia-board" style="margin-top: 1rem;"></div>
@@ -233,39 +292,6 @@ window.onload = function () {
     });
   });
 
-  // ✅ MEMORY MATCH
-  const emojis = ['👻','🕸️','🎃','🧛','🧙‍♀️','👽','👻','🕸️','🎃','🧛','🧙‍♀️','👽'];
-  const shuffle = [...emojis].sort(() => 0.5 - Math.random());
-  const memoryBoard = document.getElementById('memoryBoard');
-  let flipped = [];
-  if (memoryBoard) {
-    shuffle.forEach((em, i) => {
-      const card = document.createElement('div');
-      card.className = 'memory-card';
-      card.dataset.index = i;
-      card.innerText = '🃏';
-      card.onclick = () => {
-        if (flipped.length < 2 && !card.classList.contains('matched')) {
-          card.innerText = em;
-          flipped.push({ el: card, val: em });
-          if (flipped.length === 2) {
-            if (flipped[0].val === flipped[1].val) {
-              flipped[0].classList.add('matched');
-              flipped[1].classList.add('matched');
-              flipped = [];
-            } else {
-              setTimeout(() => {
-                flipped[0].innerText = '🃏';
-                flipped[1].innerText = '🃏';
-                flipped = [];
-              }, 800);
-            }
-          }
-        }
-      };
-      memoryBoard.appendChild(card);
-    });
-  }
 
   // ✅ SIMON SAYS
   const simonButtons = document.querySelectorAll('.simon-btn');
@@ -384,46 +410,100 @@ window.onload = function () {
 
   showTrivia();
 };
-</script><!-- MEMORY MATCH -->
-<h2>Memory Match</h2>
-<div id="memoryBoard" style="display: grid; grid-template-columns: repeat(6, 60px); gap: 10px;"></div>
-
-<!-- SIMON SAYS -->
-<h2>Simon Says</h2>
-<div class="simon-board" style="display: flex; gap: 1rem;">
-  <div class="simon-btn" style="background: #a855f7; width: 70px; height: 70px;"></div>
-  <div class="simon-btn" style="background: #f43f5e; width: 70px; height: 70px;"></div>
-  <div class="simon-btn" style="background: #38bdf8; width: 70px; height: 70px;"></div>
-  <div class="simon-btn" style="background: #34d399; width: 70px; height: 70px;"></div>
-</div>
-<script>
+</script><script>
 window.onload = function () {
-  // ✅ Memory Match
-  const emojis = ['👻','🕸️','🎃','🧛','🧙‍♀️','👽','👻','🕸️','🎃','🧛','🧙‍♀️','👽'];
+  const simonBtns = {
+    green: document.getElementById('green'),
+    red: document.getElementById('red'),
+    yellow: document.getElementById('yellow'),
+    blue: document.getElementById('blue')
+  };
+
+  const sound = document.getElementById('simon-sound');
+  const scoreDisplay = document.getElementById('score');
+
+  const colors = Object.keys(simonBtns);
+  let simonSequence = [];
+  let userSequence = [];
+  let score = 0;
+  let acceptingInput = false;
+
+  function flashButton(color) {
+    const btn = simonBtns[color];
+    btn.classList.add('glow');
+    sound.currentTime = 0;
+    sound.play();
+    setTimeout(() => btn.classList.remove('glow'), 300);
+  }
+
+  function playSequence() {
+    acceptingInput = false;
+    userSequence = [];
+    simonSequence.push(colors[Math.floor(Math.random() * 4)]);
+
+    simonSequence.forEach((color, i) => {
+      setTimeout(() => flashButton(color), i * 800);
+    });
+
+    setTimeout(() => acceptingInput = true, simonSequence.length * 800);
+  }
+
+  function resetGame() {
+    alert(`👻 Wrong move! Final Score: ${score}`);
+    score = 0;
+    simonSequence = [];
+    userSequence = [];
+    scoreDisplay.textContent = 'Score: 0';
+    setTimeout(playSequence, 1000);
+  }
+
+  colors.forEach(color => {
+    simonBtns[color].addEventListener('click', () => {
+      if (!acceptingInput) return;
+
+      const expectedColor = simonSequence[userSequence.length];
+      userSequence.push(color);
+      flashButton(color);
+
+      if (color !== expectedColor) {
+        resetGame();
+      } else if (userSequence.length === simonSequence.length) {
+        score++;
+        scoreDisplay.textContent = `Score: ${score}`;
+        setTimeout(playSequence, 1000);
+      }
+    });
+  });
+
+  // Start the upgraded game
+  playSequence();
+};
+</script><script>
+window.onload = function () {
+  // MEMORY MATCH GAME
+  const emojis = ['👻','🕸️','🎃','🧛','🧙‍♀️','👽','👹','🧟','👻','🕸️','🎃','🧛','🧙‍♀️','👽','👹','🧟'];
   const shuffled = [...emojis].sort(() => Math.random() - 0.5);
   const memoryBoard = document.getElementById('memoryBoard');
   let flipped = [];
 
   if (memoryBoard) {
+    memoryBoard.innerHTML = '';
     shuffled.forEach((emoji, index) => {
       const card = document.createElement('div');
+      card.className = 'memory-card';
       card.innerText = '❓';
       card.dataset.emoji = emoji;
-      card.className = 'memory-card';
-      card.style.cssText = 'width:50px;height:50px;background:#111;color:white;font-size:1.5rem;text-align:center;display:flex;align-items:center;justify-content:center;border-radius:8px;cursor:pointer;';
       card.onclick = () => {
         if (flipped.length < 2 && !card.classList.contains('matched') && !flipped.includes(card)) {
           card.innerText = emoji;
           flipped.push(card);
           if (flipped.length === 2) {
             if (flipped[0].dataset.emoji === flipped[1].dataset.emoji) {
-              flipped[0].classList.add('matched');
-              flipped[1].classList.add('matched');
+              flipped.forEach(c => c.classList.add('matched'));
               flipped = [];
             } else {
               setTimeout(() => {
-                flipped[0].innerText = '❓';
-                flipped[1].innerText = '❓';
+                flipped.forEach(c => c.innerText = '❓');
                 flipped = [];
               }, 800);
             }
@@ -432,45 +512,6 @@ window.onload = function () {
       };
       memoryBoard.appendChild(card);
     });
-  }
-
-  // ✅ Simon Says
-  const simonBtns = document.querySelectorAll('.simon-btn');
-  let simonSequence = [];
-  let userSequence = [];
-
-  function flash(btn) {
-    btn.style.filter = 'brightness(1.5)';
-    setTimeout(() => btn.style.filter = '', 300);
-  }
-
-  function startSimon() {
-    const random = simonBtns[Math.floor(Math.random() * simonBtns.length)];
-    simonSequence.push(random);
-    userSequence = [];
-    simonSequence.forEach((btn, i) => {
-      setTimeout(() => flash(btn), i * 600);
-    });
-  }
-
-  simonBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      flash(btn);
-      userSequence.push(btn);
-      const idx = userSequence.length - 1;
-      if (userSequence[idx] !== simonSequence[idx]) {
-        alert('Wrong! Starting over.');
-        simonSequence = [];
-        userSequence = [];
-        startSimon();
-      } else if (userSequence.length === simonSequence.length) {
-        setTimeout(startSimon, 1000);
-      }
-    });
-  });
-
-  if (simonBtns.length > 0) {
-    startSimon();
   }
 };
 </script></body>
