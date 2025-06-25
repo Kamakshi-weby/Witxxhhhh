@@ -124,6 +124,17 @@
       box-shadow: 0 0 10px #8b5cf6;
       cursor: pointer;
     }
+    .tic-cell {
+  width: 80px;
+  height: 80px;
+  background-color: #000;
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
@@ -171,11 +182,43 @@ So if I seem like I’m drifting apart, Know it’s not hate—it’s a heavy he
 
 24/06/2025</p>
     </div>
-  </section>  <section id="games">
-    <h2>Games 🎮</h2>
-    <div class="game-container">
-      <div class="game-card">
-        
+  </section>   
+  
+<!-- 🎮 GAMES SECTION -->
+<section id="game" style="background: #1e1e2f; color: white; padding: 2rem;">
+  <h2 style="text-align: center; text-decoration: underline;">Game Zone 🕹️</h2>
+
+  <!-- 🎯 TIC TAC TOE -->
+  <h3 style="margin-top: 2rem;">Tic Tac Toe</h3>
+  <div style="display: grid; grid-template-columns: repeat(3, 80px); gap: 10px;" id="tic-tac-board">
+    <div class="tic-cell"></div>
+    <div class="tic-cell"></div>
+    <div class="tic-cell"></div>
+    <div class="tic-cell"></div>
+    <div class="tic-cell"></div>
+    <div class="tic-cell"></div>
+    <div class="tic-cell"></div>
+    <div class="tic-cell"></div>
+    <div class="tic-cell"></div>
+  </div>
+
+  <!-- 🧠 MEMORY MATCH -->
+  <h3 style="margin-top: 2rem;">Memory Match</h3>
+  <div id="memoryBoard" style="display: grid; grid-template-columns: repeat(6, 60px); gap: 10px;"></div>
+
+  <!-- 🧠 SIMON SAYS -->
+  <h3 style="margin-top: 2rem;">Simon Says</h3>
+  <div class="simon-board" style="display: flex; gap: 1rem;">
+    <div class="simon-btn" style="background: #a855f7; width: 70px; height: 70px;"></div>
+    <div class="simon-btn" style="background: #f43f5e; width: 70px; height: 70px;"></div>
+    <div class="simon-btn" style="background: #38bdf8; width: 70px; height: 70px;"></div>
+    <div class="simon-btn" style="background: #34d399; width: 70px; height: 70px;"></div>
+  </div>
+
+  <!-- 🎥 BOLLYWOOD TRIVIA -->
+  <h3 style="margin-top: 2rem;">Bollywood Trivia</h3>
+  <div class="trivia-board" style="margin-top: 1rem;"></div>
+</section> 
           <script>
 window.onload = function () {
   // ✅ TIC TAC TOE
