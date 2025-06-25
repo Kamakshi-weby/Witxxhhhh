@@ -252,5 +252,139 @@ So if I seem like I’m drifting apart, Know it’s not hate—it’s a heavy he
       };
       memoryBoard.appendChild(card);
     });
-  </script></body>
+  </script><script>
+window.onload = function () {
+  // ✅ TIC TAC TOE
+  const cells = document.querySelectorAll('.tic-cell');
+  let currentPlayer = 'X';
+  cells.forEach(cell => {
+    cell.addEventListener('click', () => {
+      if (cell.textContent === '') {
+        cell.textContent = currentPlayer;
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      }
+    });
+  });
+
+  // ✅ MEMORY MATCH
+  const emojis = ['👻','🕸️','🎃','🧛','🧙‍♀️','👽','👻','🕸️','🎃','🧛','🧙‍♀️','👽'];
+  const shuffle = [...emojis].sort(() => 0.5 - Math.random());
+  const memoryBoard = document.getElementById('memoryBoard');
+  let flipped = [];
+  if (memoryBoard) {
+    shuffle.forEach((em, i) => {
+      const card = document.createElement('div');
+      card.className = 'memory-card';
+      card.dataset.index = i;
+      card.innerText = '🃏';
+      card.onclick = () => {
+        if (flipped.length < 2 && !card.classList.contains('matched')) {
+          card.innerText = em;
+          flipped.push({ el: card, val: em });
+          if (flipped.length === 2) {
+            if (flipped[0].val === flipped[1].val) {
+              flipped[0].classList.add('matched');
+              flipped[1].classList.add('matched');
+              flipped = [];
+            } else {
+              setTimeout(() => {
+                flipped[0].innerText = '🃏';
+                flipped[1].innerText = '🃏';
+                flipped = [];
+              }, 800);
+            }
+          }
+        }
+      };
+      memoryBoard.appendChild(card);
+    });
+  }
+
+  // ✅ SIMON SAYS
+  const simonButtons = document.querySelectorAll('.simon-btn');
+  let simonSequence = [];
+  let userSequence = [];
+
+  function flash(btn) {
+    btn.style.opacity = '0.5';
+    setTimeout(() => btn.style.opacity = '1', 300);
+  }
+
+  function playSimon() {
+    const random = simonButtons[Math.floor(Math.random() * simonButtons.length)];
+    simonSequence.push(random);
+    userSequence = [];
+    simonSequence.forEach((btn, i) => {
+      setTimeout(() => flash(btn), i * 600);
+    });
+  }
+
+  simonButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      flash(btn);
+      userSequence.push(btn);
+      const index = userSequence.length - 1;
+      if (userSequence[index] !== simonSequence[index]) {
+        alert('Wrong! Game Over. Try again.');
+        simonSequence = [];
+        userSequence = [];
+        playSimon();
+      } else if (userSequence.length === simonSequence.length) {
+        setTimeout(playSimon, 1000);
+      }
+    });
+  });
+
+  if (simonButtons.length > 0) {
+    playSimon();
+  }
+
+  // ✅ BOLLYWOOD TRIVIA
+  const triviaContainer = document.querySelector('.trivia-board');
+  const questions = [
+    { q: 'Who played the role of Rancho in 3 Idiots?', a: 'Aamir Khan' },
+    { q: 'Which movie has the iconic song \"Tujh Mein Rab Dikhta Hai\"?', a: 'Rab Ne Bana Di Jodi' },
+    { q: 'Who directed \"Dilwale Dulhania Le Jayenge\"?', a: 'Aditya Chopra' },
+    { q: 'Name the movie with the dialogue \"Mogambo Khush Hua\".', a: 'Mr. India' }
+  ];
+
+  let triviaIndex = 0;
+
+  function showTrivia() {
+    if (!triviaContainer) return;
+    if (triviaIndex >= questions.length) {
+      triviaContainer.innerHTML = '<p>✨ You completed the quiz! ✨</p>';
+      return;
+    }
+
+    const qObj = questions[triviaIndex];
+    const qEl = document.createElement('div');
+    qEl.className = 'trivia-q';
+    qEl.innerText = qObj.q;
+
+    const input = document.createElement('input');
+    input.placeholder = 'Your answer...';
+    input.style.margin = '10px';
+
+    const btn = document.createElement('button');
+    btn.innerText = 'Submit';
+    btn.onclick = () => {
+      if (input.value.trim().toLowerCase() === qObj.a.toLowerCase()) {
+        alert('Correct!');
+      } else {
+        alert('Oops! Right answer: ' + qObj.a);
+      }
+      triviaIndex++;
+      showTrivia();
+    };
+
+    triviaContainer.innerHTML = '';
+    triviaContainer.appendChild(qEl);
+    triviaContainer.appendChild(input);
+    triviaContainer.appendChild(btn);
+  }
+
+  showTrivia();
+};
+</script></body>
 </html>
