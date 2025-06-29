@@ -609,3 +609,367 @@ body {
     <p>Nothing to post yet...sorry </p>
     <h3>Blog 2: 24/06/2025</h3>
     <p> a little more wait for some cool blogs...</p>
+    <section id="echos" class="echos-section">
+  <h2 class="spooky-heading">🫧 Echos from Beyond</h2>
+  <article class="echo-entry">
+    <div class="echo-card">
+  <div class="echo-text">
+    <h3>“MY MOM”</h3>
+    <p>She has truly been the most precious gift I’ve ever received from God. And as I’ve grown, I’ve come to realize something that words can barely capture — no one, absolutely no one, can love me the way she does.
+
+She’s in her 50s now, a brilliant and respected Advocate by profession. But to me, she’s more than just a lawyer — she’s my inspiration, my definition of strength, and the woman I aspire to be like every single day.
+
+Not because she is my mother-but it’s the way she carries herself, her grace under pressure, and her ability to balance power with gentleness that leaves me in awe.
+
+She wakes up early, gets everything at home running, and then drives off to her workplace to manage things there. She handles everything so smooth and makes difficult things so easy and still — after a long, exhausting day — she returns home and cooks the most comforting, delicious food you could ever imagine.
+
+But more than all of that… it’s her love. Her endless, unconditional love.
+The kind that heals me.
+The kind that protects me.
+The kind that no one else in this world can match.
+
+She’s not just my mom.
+She’s my strength.
+She’s my soft place to fall.
+She’s home.
+
+I love you so much, Mumma — more than words could ever explain.
+And every day, I thank the universe that you’re mine.</p>
+  </div>
+  <img src="1750922400502.webp" alt="Spooky spirit" class="echo-img">
+</div>
+
+  
+<div id="echo-submission" class="echo-form">
+  <h3>🫧 Whisper Your Own Echo...</h3>
+  <textarea id="userStory" placeholder="The spirit moved, and I heard it say..."></textarea>
+  <button onclick="submitEcho()">Submit</button>
+</div>
+
+<div id="userEchos" class="user-echos">
+  <h3>🔮 Other Echos</h3>
+</div>
+
+ <section id="mirror" class="spooky-mirror">
+  <h2 class="spooky-heading">🪞 Haunted Mirror</h2>
+  <p id="mirrorMessage">Peer into the mirror... what do you seek?</p>
+  <button onclick="talkToSpirit()">Speak to the Spirit</button>
+  </section>
+  <section id="quiz" class="quiz">
+    <h2>🔮 What Kind of Witch Are You?</h2>
+    <div class="quiz-box">
+      <p><strong>Q1:</strong> What time of day or place calls to your soul?</p>
+<input type="radio" name="q1" value="forest" /> A misty forest at dawn 🌲<br />
+<input type="radio" name="q1" value="storm" /> Thunderstorms in the evening 🌩️<br />
+<input type="radio" name="q1" value="shadow" /> Midnight shadows 🌑<br />
+<input type="radio" name="q1" value="fire" /> Blazing sunlight and fire rituals 🔥<br />
+<input type="radio" name="q1" value="ice" /> Snow-covered silence ❄️<br />
+<input type="radio" name="q1" value="sea" /> Waves crashing at night 🌊<br />
+<input type="radio" name="q1" value="bone" /> Dusty bones and forgotten whispers 🦴<br />
+<input type="radio" name="q1" value="cosmic" /> Stargazing from your window 💫<br />
+      <button onclick="getWitchResult()">Reveal My Witch Type</button>
+      <p id="witchResult"></p>
+    </div>
+  </section> 
+  <div id="secretTrigger" style="text-align: center; margin: 60px 0;">
+  <p style="color: #999;">
+    ⚠️ <span onclick="triggerScare()" style="cursor: pointer; text-decoration: underline;">Do not click this</span>
+  </p>
+  <div id="scareContainer">
+    <img
+      id="scareImage"
+      src="Horror.jpg"
+      alt="Scary Face"
+    />
+
+  </div>
+  </div>
+  <section id="games" class="games">
+    <h2>🕹️ Witchy Games</h2>
+    <div class="game-box">
+      <h3>🃏 Tarot Card Generator</h3>
+      <button onclick="drawTarot()">Draw a Card</button>
+      <p id="tarotResult"></p>
+    </div>
+    <div class="game-box">
+      <h3>✨ Spell Generator</h3>
+      <button onclick="generateSpell()">Cast Spell</button>
+      <p id="spellResult"></p>
+    </div>
+    <div class="game-box">
+      <h3>🧪 Potion Maker</h3>
+      <button onclick="makePotion()">Brew Potion</button>
+      <p id="potionResult"></p>
+    </div>
+    <div class="game-box">
+      <h3>🔍 Hidden Object Game</h3>
+      <p>Coming soon! (interactive room with items)</p>
+    </div>
+  </section>  <section id="calendar" class="calendar">
+    <h2>🌕 Spooky Calendar</h2>
+    <ul>
+      <li>🌝 Full Moon – 21 July 2025</li>
+      <li>🔮 Mercury Retrograde – 5 Aug to 28 Aug 2025</li>
+      <li>🌑 New Moon – 4 August 2025</li>
+      <li>🕯️ Witch's Market – 13 July 2025</li>
+<li>💀 Ancestor Night – 31 October 2025</li>
+<li>🧛 Blood Moon Eclipse – 8 November 2025</li>
+<li>🎃 Samhain Festival – 31 October 2025</li>
+<li>📿 Dark Spirit Portal Opening – 21 December 2025</li>
+<li>🔔 Hex Hour – Every Friday the 13th</li>
+    </ul>
+  </section> 
+  <section id="horoscope" class="horoscope-section">
+  <h2 class="spooky-heading">🧿 Your Spooky Horoscope</h2>
+  <label for="sign">Choose your sign:</label>
+  <select id="sign">
+    <option value="">--Select--</option>
+    <option value="aries">♈ Aries</option>
+    <option value="taurus">♉ Taurus</option>
+    <option value="gemini">♊ Gemini</option>
+    <option value="cancer">♋ Cancer</option>
+    <option value="leo">♌ Leo</option>
+    <option value="virgo">♍ Virgo</option>
+    <option value="libra">♎ Libra</option>
+    <option value="scorpio">♏ Scorpio</option>
+    <option value="sagittarius">♐ Sagittarius</option>
+    <option value="capricorn">♑ Capricorn</option>
+    <option value="aquarius">♒ Aquarius</option>
+    <option value="pisces">♓ Pisces</option>
+  </select>
+  <button onclick="getSpookyHoroscope()">Reveal My Fate</button>
+  <p id="spookyResult" style="margin-top: 20px; color: violet; font-style: italic;"></p>
+  </section>
+  <section id="playlist" class="spotify">
+    <h2>🔮 Some Creepy Vibes</h2>
+    <p><em>🧪 This playlist was brewed under a blood moon with ghostly hands and glittering shadows. It’s not just music — it’s a spell. Press play and vanish. 💫👻 
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1Pg4aIDGiFGKhgAfwDa3b3?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  
+  <footer id="adios" class="adios"><footer style="text-align:center; padding: 50px 20px; background: linear-gradient(90deg, #0b0019, #1e0033); color: violet; font-family: 'Creepster', cursive; font-size: 22px; letter-spacing: 2px; text-shadow: 2px 2px 6px purple;">
+ <h2>🌙 Adios</h2>
+    <p>Thank you for exploring my little spooky world! This was just a witchy beginning — more chaos, more spells, and more stories will brew soon. Stay weird, stay magical. ✨👾💀<br />
+    Adios, fellow night crawlers!</p>
+  </footer>  <script>
+    function getWitchResult() {
+      const val = document.querySelector('input[name="q1"]:checked');
+      if (!val) return alert("Choose an answer!");
+      const type = val.value;
+      const types = {
+  forest: "🌲 You're a Forest Witch! You draw power from nature and earth spirits.",
+  storm: "🌩️ You're a Storm Witch! You thrive in chaos, change, and lightning strikes.",
+  shadow: "🌑 You're a Shadow Witch! You're mysterious, deep, and see the unseen.",
+  fire: "🔥 You're a Fire Witch! Passionate, fierce, and born to lead.",
+  ice: "❄️ You're an Ice Witch! Calm, elegant, and unshakably in control.",
+  sea: "🌊 You're a Sea Witch! Emotions, tides, and the unknown call to you.",
+  bone: "🦴 You're a Bone Witch! Wise, ancient, connected to the spirit realm.",
+  cosmic: "💫 You're a Cosmic Witch! You read stars and dream with galaxies."
+};
+      document.getElementById("witchResult").innerText = types[type];
+    }
+
+    function drawTarot() {
+      const cards = ["The Moon", "The Tower", "The Lovers", "Death", "The Star"];
+      const meanings = {
+        "The Moon": "Confusion, illusion, dreams.",
+        "The Tower": "Sudden change, upheaval.",
+        "The Lovers": "Connection, choice, harmony.",
+        "Death": "Endings, transformation, rebirth.",
+        "The Star": "Hope, guidance, inspiration."
+      };
+      const pick = cards[Math.floor(Math.random() * cards.length)];
+      document.getElementById("tarotResult").innerText = `${pick}: ${meanings[pick]}`;
+    }
+
+    function generateSpell() {
+      const names = ["Binding Whispers", "Night Veil", "Crystal Echo", "Blood Pact"];
+      const ingredients = ["raven feather", "moon water", "black salt", "phantom root"];
+      const chants = ["Morva elthra senna!", "Zel nocht varun!", "Silven drak osh!"];
+      const spell = names[Math.floor(Math.random() * names.length)];
+      const ing = ingredients.sort(() => 0.5 - Math.random()).slice(0, 2).join(", ");
+      const chant = chants[Math.floor(Math.random() * chants.length)];
+      document.getElementById("spellResult").innerText = `${spell}\nIngredients: ${ing}\nIncantation: ${chant}`;
+    }
+
+    function makePotion() {
+     const results = [
+  "Potion of Eternal Confidence",
+  "Love Elixir",
+  "Invisibility Draught",
+  "Truth Serum",
+  "Witch's Brew of Misfortune",
+  "Serpent's Tongue Serum",
+  "Liquid Luck (Felix Felicis)",
+  "Memory Mist",
+  "Nightmare Nectar",
+  "Dragon’s Breath Potion",
+  "Potion of Shapeshifting",
+  "Ghost Whisper Tonic",
+  "Elixir of Time Freeze",
+  "Poison of Eternal Sleep",
+  "Soul Binding Vial",
+  "Potion of Endless Night",
+  "Spider Silk Serum",
+  "Moonlight Elixir",
+  "Goblin Gigglegoo",
+  "Cauldron of Curses"
+]; 
+      document.getElementById("potionResult").innerText = `You brewed: ${results[Math.floor(Math.random() * results.length)]}`;
+    }
+  </script><script>
+  function talkToSpirit() {
+    const messages = [
+      "You are not alone... the spirits walk with you.",
+      "Your future is cloudy, but something stirs in the shadows.",
+      "Beware the full moon... it brings more than light.",
+      "A forgotten soul is watching. Are you ready to listen?",
+      "Your power grows stronger, but so does the danger.",
+      "You will soon meet someone... or something.",
+      "The mirror sees all — even what you try to hide."
+    ];
+    const mirror = document.getElementById("mirrorMessage");
+    const spirit = messages[Math.floor(Math.random() * messages.length)];
+    mirror.innerText = `"${spirit}"`;
+  }
+</script>
+<script>
+  function triggerScare() {
+    const scare = document.getElementById("scareContainer");
+    const blood = document.getElementById("bloodFlash");
+    scare.style.display = "flex";
+    blood.style.display = "block";
+
+    const scream = new Audio("https://www.myinstants.com/media/sounds/wilhelm-scream.mp3");
+    scream.play();
+
+    setTimeout(() => {
+      scare.style.display = "none";
+      blood.style.display = "none";
+    }, 3000);
+  }
+</script>
+<script>
+  const horoscopes = {
+    aries: [
+      "Aries, your flame burns bright tonight... but beware who follows its light.",
+      "Your courage may attract spirits. Burn sage at dusk.",
+      "A shadow has its eye on you. Be bold, but not careless."
+    ],
+    taurus: [
+      "Taurus, something old is clinging to your aura. Cleanse with earth and salt.",
+      "Your stubbornness will summon ancient energy. Are you ready to deal with it?",
+      "A creature walks where you once stood. It remembers you."
+    ],
+    gemini: [
+      "Two faces, two paths. One leads to light, the other to screams.",
+      "Speak less today. The spirits are listening.",
+      "Your reflection may answer before you do. Avoid mirrors."
+    ],
+    cancer: [
+      "The moon is whispering to you. Listen closely, but do not answer.",
+      "Your feelings summon more than just memories tonight.",
+      "Something watery wants to drag you under — emotionally or otherwise."
+    ],
+    leo: [
+      "You’re glowing... which means dark things are watching.",
+      "Pride may attract a challenge. A ghostly one.",
+      "Don’t roar too loud. It may wake what sleeps below."
+    ],
+    virgo: [
+      "You notice the patterns... but some were never meant to be seen.",
+      "Dust your corners. Something’s hiding behind the perfection.",
+      "Your logic won’t help when magic slips through the cracks."
+    ],
+    libra: [
+      "Balance is breaking. Tip too far, and you’ll see the veil tear.",
+      "You’ll be haunted by a choice. But which one?",
+      "Mirror magic surrounds you — don’t stare too long."
+    ],
+    scorpio: [
+      "Death isn’t the end for you today... it’s a beginning.",
+      "A secret you’ve buried is clawing its way out.",
+      "Your energy is magnetic — even to the dead."
+    ],
+    sagittarius: [
+      "Wander far, but don’t follow the voices.",
+      "You’ll find something lost. It may not want to be found.",
+      "A new path opens. But it smells of ash and blood."
+    ],
+    capricorn: [
+      "You're grounded — but something is trying to pull you down further.",
+      "Be cautious with time. The past wants you back.",
+      "Bones remember footsteps. Walk lighter today."
+    ],
+    aquarius: [
+      "Your visions grow clearer, but they may not be your own.",
+      "The air crackles. Something magical is reaching for you.",
+      "Dreams will deliver a message tonight. Do not ignore it."
+    ],
+    pisces: [
+      "You see beyond the veil — but something is staring back.",
+      "Water remembers. Don’t let it carry away your truth.",
+      "Tonight, your dreams become a door. Will you walk through?"
+    ]
+  };
+
+  function getSpookyHoroscope() {
+    const sign = document.getElementById("sign").value;
+    const result = document.getElementById("spookyResult");
+
+    if (!sign) {
+      result.innerText = "Please choose your zodiac sign, child of the stars...";
+      return;
+    }
+
+    const options = horoscopes[sign];
+    const message = options[Math.floor(Math.random() * options.length)];
+    result.innerText = message;
+  }
+</script>
+<script>
+  function submitEcho() {
+    const story = document.getElementById("userStory").value.trim();
+    const userEchos = document.getElementById("userEchos");
+
+    if (story === "") {
+      alert("The spirits demand a message...");
+      return;
+    }
+
+    const entry = document.createElement("div");
+    entry.className = "entry";
+    entry.innerText = story;
+    userEchos.appendChild(entry);
+
+    document.getElementById("userStory").value = "";
+  }
+</script>
+<script>
+  const toggleBtn = document.getElementById("menuToggle");
+  const menu = document.getElementById("spookyMenu");
+
+  toggleBtn.addEventListener("click", () => {
+    menu.classList.toggle("active");
+  });
+</script>
+<p class="chromaverse-invite" style="margin-top: 20px;">
+  Ready to leave the shadows behind? Step into the light of The Chromaverse.
+</p>
+<div style="text-align: center; margin-top: 3rem; margin-bottom: 3rem;">
+  <a href="THE CHROMAVERSE.html">
+    <button style="
+      background: linear-gradient(to right, #ff00cc, #3333ff);
+      border: none;
+      padding: 14px 28px;
+      font-size: 18px;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff00cc;
+      transition: transform 0.3s ease;
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+       🎮Enter The Chromaverse🎮
+    </button>
+  </a>
+</div>
+
+
